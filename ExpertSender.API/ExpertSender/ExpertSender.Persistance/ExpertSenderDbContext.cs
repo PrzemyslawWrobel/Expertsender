@@ -28,14 +28,16 @@ namespace ExpertSender.Persistance
         {
         }
 
-        public DbSet<Address> Addresses { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Address> Addresses { get; set; }
        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.SeedData();
+            //Configuration for Value Object - EmployeeName
+            modelBuilder.Entity<Employee>().OwnsOne(p => p.EmployeeName);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.SeedData();
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
