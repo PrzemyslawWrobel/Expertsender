@@ -16,45 +16,44 @@ namespace ExpertSender.Domain.Entities
         public int Id { get; set; }
 
         /// <summary>
-        /// Jaki adres domowy, do korespondencji, zamieszkanaia, wykonywania działalności
+        /// Adress type - home, correspondence.
         /// </summary>
         public string AddressType { get; set; }
 
         /// <summary>
-        /// Nazwa ulicy
+        /// Name of street.
         /// </summary>
         public string Street { get; set; }
 
         /// <summary>
-        /// Numer Bloku, Domu
+        /// Naumber of building, block, house.
         /// </summary>
         public string BuildingNumber { get; set; }
 
         /// <summary>
-        /// Numer mieszkania
+        /// Flat number.
         /// </summary>
         public string FlatNumber { get; set; }
 
         /// <summary>
-        /// Kod pocztowy
+        /// Zipp code.
         /// </summary>
         public string ZipCode { get; set; }
 
         /// <summary>
-        /// Nazwa miasta, Wsi
+        /// Name of city, village.
         /// </summary>
         public string City { get; set; }
 
         /// <summary>
-        /// Nazwa Kraju
+        /// Name of country.
         /// </summary>
         public string Country { get; set; }
 
-        /*-- RELACJE --*/
+        /*-- Relations --*/
 
-        //Relacja 1 Customer może mieć wiele adresów. int? oznacza że adres nie jest wymagany
-        public int? EmployeeId { get; set; }
-        //Relacja do Customera 
+        //Relation 1 : N  to Employee
+        public int? EmployeeId { get; set; } 
         public Employee Employee { get; set; }
 
     }

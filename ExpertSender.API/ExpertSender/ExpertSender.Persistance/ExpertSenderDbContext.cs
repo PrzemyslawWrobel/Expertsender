@@ -30,14 +30,15 @@ namespace ExpertSender.Persistance
 
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Address> Addresses { get; set; }
+        public DbSet<Department> Departments { get; set; }
        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Configuration for Value Object - EmployeeName
             modelBuilder.Entity<Employee>().OwnsOne(p => p.EmployeeName);
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-            modelBuilder.SeedData();
+            //modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+           // modelBuilder.SeedData();
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())

@@ -1,9 +1,11 @@
 ﻿using ExpertSender.Domain.Common;
+using ExpertSender.Domain.Enums;
 using ExpertSender.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,15 +20,19 @@ namespace ExpertSender.Domain.Entities
         public int Id { get; set; }
 
         /// <summary>
-        /// Dane osoby do kontaktów
+        /// Value object Employee FirstName , LastName
         /// </summary>
         public EmployeeName EmployeeName { get; set; }
 
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string Email { get; set; }
+        public DateTime DateOfBrith { get; set; }
+        public Gender Gender { get; set; }
+        public Department Department { get; set; }
 
-
-        // Relacja 1 : N relacja jeden Customer wiele adresów
+        // Relation 1 : N One Employee to many Adresses
         public List<Address> Addresses { get; set; }
+
+        //Relations 1 : N 
+        public int DepartmentId { get; set; }
     }
 }

@@ -10,8 +10,9 @@ namespace ExpertSender.Application.Common.Interfaces
 {
     public interface IExpertSenderDbContext
     {
-        DbSet<Address> Addresses { get; set; }
         DbSet<Employee> Employees { get; set; }
+        DbSet<Address> Addresses { get; set; }
+        DbSet<Department> Departments { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
