@@ -1,4 +1,4 @@
-﻿using ExpertSender.Domain.Common;
+﻿ using ExpertSender.Domain.Common;
 using ExpertSender.Domain.Enums;
 using ExpertSender.Domain.ValueObjects;
 using System;
@@ -17,7 +17,7 @@ namespace ExpertSender.Domain.Entities
         {
             Addresses = new List<Address>();
         }
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
         /// <summary>
         /// Value object Employee FirstName , LastName
@@ -28,11 +28,12 @@ namespace ExpertSender.Domain.Entities
         public DateTime DateOfBrith { get; set; }
         public Gender Gender { get; set; }
         public Department Department { get; set; }
+        public int DepartmentId { get; set; }//Relations 1 : N 
 
         // Relation 1 : N One Employee to many Adresses
         public List<Address> Addresses { get; set; }
 
-        //Relations 1 : N 
-        public int DepartmentId { get; set; }
+        
+       // public int DepartmentId { get; set; }
     }
 }

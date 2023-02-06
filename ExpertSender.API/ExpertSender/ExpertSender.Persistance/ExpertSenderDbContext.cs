@@ -35,6 +35,11 @@ namespace ExpertSender.Persistance
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Address>(ad =>
+                ad.HasOne(c => c.Employee)
+                  .WithMany(u => u.Addresses)
+                  .HasForeignKey(u => u.EmployeeId)
+            );
             //Configuration for Value Object - EmployeeName
             modelBuilder.Entity<Employee>().OwnsOne(p => p.EmployeeName);
             //modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

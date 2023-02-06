@@ -4,6 +4,7 @@ using ExpertSender.Persistance;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ExpertSender.Persistance.Migrations
 {
     [DbContext(typeof(ExpertSenderDbContext))]
-    partial class ExpertSenderDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230205154549_update")]
+    partial class update
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,7 +51,7 @@ namespace ExpertSender.Persistance.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
                     b.Property<string>("FlatNumber")
@@ -136,7 +139,7 @@ namespace ExpertSender.Persistance.Migrations
                     b.Property<DateTime>("DateOfBrith")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DepartmentId")
+                    b.Property<int?>("DepartmentId")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
@@ -171,9 +174,7 @@ namespace ExpertSender.Persistance.Migrations
                 {
                     b.HasOne("ExpertSender.Domain.Entities.Employee", "Employee")
                         .WithMany("Addresses")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmployeeId");
 
                     b.Navigation("Employee");
                 });
@@ -182,9 +183,7 @@ namespace ExpertSender.Persistance.Migrations
                 {
                     b.HasOne("ExpertSender.Domain.Entities.Department", "Department")
                         .WithMany("Employees")
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DepartmentId");
 
                     b.OwnsOne("ExpertSender.Domain.ValueObjects.EmployeeName", "EmployeeName", b1 =>
                         {

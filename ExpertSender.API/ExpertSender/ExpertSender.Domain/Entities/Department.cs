@@ -12,8 +12,8 @@ namespace ExpertSender.Domain.Entities
         public Department()
         {
             Employees= new List<Employee>();
-        }
-        public int Id { get; set; }
+        } 
+
         public string DepartmentName { get; set; }
         
         // Relations 1 : N 
