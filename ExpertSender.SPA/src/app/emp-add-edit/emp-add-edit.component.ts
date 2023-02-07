@@ -35,8 +35,13 @@ export class EmpAddEditComponent implements OnInit {
       gender: '',
       education: '',
       company: '',
-      experience: '',
-      package: '',
+      addressType: '',
+      street: '',
+      buildingNumber: '',
+      flatNumber: '',
+      zipCode: '',
+      city: '',
+      country: '',
     });
   }
 

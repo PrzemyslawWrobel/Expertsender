@@ -42,8 +42,8 @@ namespace ExpertSender.Persistance
             );
             //Configuration for Value Object - EmployeeName
             modelBuilder.Entity<Employee>().OwnsOne(p => p.EmployeeName);
-            //modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-           // modelBuilder.SeedData();
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            //modelBuilder.SeedData();
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())

@@ -27,13 +27,11 @@ namespace ExpertSender.Domain.Entities
         public string Email { get; set; }
         public DateTime DateOfBrith { get; set; }
         public Gender Gender { get; set; }
-        public Department Department { get; set; }
-        public int DepartmentId { get; set; }//Relations 1 : N 
+        //public Department Department { get; set; }
+        //public int DepartmentId { get; set; }//Relations 1 : N 
 
         // Relation 1 : N One Employee to many Adresses
         public List<Address> Addresses { get; set; }
 
-        
-       // public int DepartmentId { get; set; }
     }
 }

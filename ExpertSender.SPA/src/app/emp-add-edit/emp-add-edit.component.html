@@ -6,18 +6,18 @@
       <div class="row">
           <mat-form-field appearance="outline">
               <mat-label>First name</mat-label>
-              <input matInput type="text" placeholder="Ex. Technical" formControlName="firstName">
+              <input matInput type="text" placeholder="Jan" formControlName="firstName">
           </mat-form-field>
           <mat-form-field appearance="outline">
               <mat-label>Last Name</mat-label>
-              <input matInput placeholder="Ex. Babaji" formControlName="lastName">
+              <input matInput placeholder="Kowalski" formControlName="lastName">
           </mat-form-field>
       </div>
 
       <div class="row">
           <mat-form-field appearance="outline">
               <mat-label>Email</mat-label>
-              <input matInput type="email" placeholder="Ex. test@gmail.com" formControlName="email">
+              <input matInput type="email" placeholder="Ex. jan.kowalski@gmail.com" formControlName="email">
           </mat-form-field>
           <mat-form-field appearance="outline">
               <mat-label>Date of birth</mat-label>
@@ -39,11 +39,8 @@
 
       <div class="row">
           <mat-form-field appearance="outline">
-              <mat-label>Education</mat-label>
-              <mat-select formControlName="education">
-                  <mat-option *ngFor="let val of education" [value]="val">{{val}}
-                  </mat-option>
-              </mat-select>
+            <mat-label>Education</mat-label>
+            <input matInput placeholder="Ex. Gdynia Maritime Academy" formControlName="education">
           </mat-form-field>
           <mat-form-field appearance="outline">
               <mat-label>Company</mat-label>
@@ -52,15 +49,40 @@
       </div>
       <div class="row">
           <mat-form-field appearance="outline">
-              <mat-label>Experience</mat-label>
-              <input matInput placeholder="Ex. 4" type="number" formControlName="experience">
+              <mat-label>Address type</mat-label>
+              <input matInput placeholder="Ex. Home" formControlName="addressType">
           </mat-form-field>
           <mat-form-field appearance="outline">
-              <mat-label>Package</mat-label>
-              <input matInput placeholder="Ex. 12" type="number" formControlName="package">
-              <mat-hint>In rupees</mat-hint>
+              <mat-label>Street name</mat-label>
+              <input matInput placeholder="Ex. Bratków"  formControlName="street">
           </mat-form-field>
       </div>
+      <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>Building Number</mat-label>
+            <input matInput placeholder="Ex. 12A"  formControlName="buildingNumber">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Flat number</mat-label>
+          <input matInput placeholder="Ex. Home" formControlName="flatNumber">
+      </mat-form-field>
+      <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>Postal code</mat-label>
+            <input matInput placeholder="43-300"  formControlName="zipCode">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>City</mat-label>
+          <input matInput placeholder="Ex. Kraków" formControlName="city">
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>Country</mat-label>
+            <input matInput placeholder="Poland"  formControlName="country">
+        </mat-form-field>
+      </div>
+    </div>
   </div>
   <div mat-dialog-actions class="action">
       <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>

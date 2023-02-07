@@ -31,7 +31,7 @@ namespace ExpertSender.Application.Employees.Commands.EditEmployeeCommand
             employee.Email = request.Email;
             employee.DateOfBrith = request.DateOfBrith;
             employee.Gender = request.Gender;
-            employee.Department.DepartmentName = request.DepartmentName;
+           // employee.Department.DepartmentName = request.DepartmentName;
             //employee.Addresses.FirstOrDefault(employee.)
 
 

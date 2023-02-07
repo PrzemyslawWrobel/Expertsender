@@ -34,23 +34,23 @@ namespace ExpertSender.Application.Employees.Commands.CreateEmployee
             };
             _expertSenderDbContext.Employees.AddAsync(employee, cancellationToken);
 
-            Department department = new Department()
-            {
-                DepartmentName = request.DepartmentName
-            };
-            _expertSenderDbContext.Departments.AddAsync(department, cancellationToken);
-
-            //Address address = new Address()
+            //Department department = new Department()
             //{
-            //    AddressType = request.AddressType,
-            //    Street = request.Street,
-            //    BuildingNumber = request.BuildingNumber,
-            //    FlatNumber = request.FlatNumber,
-            //    ZipCode = request.ZipCode,
-            //    City = request.City,
-            //    Country = request.Country
+            //    DepartmentName = request.DepartmentName
             //};
-            //_expertSenderDbContext.Addresses.AddAsync(address, cancellationToken);
+            //_expertSenderDbContext.Departments.AddAsync(department, cancellationToken);
+
+            Address address = new Address()
+            {
+                AddressType = request.AddressType,
+                Street = request.Street,
+                BuildingNumber = request.BuildingNumber,
+                FlatNumber = request.FlatNumber,
+                ZipCode = request.ZipCode,
+                City = request.City,
+                Country = request.Country
+            };
+            _expertSenderDbContext.Addresses.AddAsync(address, cancellationToken);
             await _expertSenderDbContext.SaveChangesAsync(cancellationToken);
             return employee.Id;
         }

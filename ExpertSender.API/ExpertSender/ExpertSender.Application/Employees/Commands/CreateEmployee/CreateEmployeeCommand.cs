@@ -17,7 +17,7 @@ namespace ExpertSender.Application.Employees.Commands.CreateEmployee
         public DateTime DateOfBrith { get; set; }
         public Gender Gender { get; set; }
 
-        public string DepartmentName { get; set; }
+        //public string DepartmentName { get; set; }
 
         /// <summary>
         /// Adress type - home, correspondence.

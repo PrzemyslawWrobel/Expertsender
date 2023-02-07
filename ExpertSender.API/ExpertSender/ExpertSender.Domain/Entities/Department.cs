@@ -11,12 +11,12 @@ namespace ExpertSender.Domain.Entities
     {
         public Department()
         {
-            Employees= new List<Employee>();
+            //Employees= new List<Employee>();
         } 
 
         public string DepartmentName { get; set; }
         
         // Relations 1 : N 
-        public List<Employee> Employees { get; set; }
+        //public List<Employee> Employees { get; set; }
     }
 }

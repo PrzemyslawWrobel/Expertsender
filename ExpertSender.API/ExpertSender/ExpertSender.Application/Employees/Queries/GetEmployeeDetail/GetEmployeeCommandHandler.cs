@@ -23,7 +23,7 @@ namespace ExpertSender.Application.Employees.Queries.GetEmployeeDetail
         public async Task<EmployeeVm> Handle(GetEmployeeCommand request, CancellationToken cancellationToken)
         {
             var employee = _expertSenderDbContext.Employees.Where(d => d.Id == request.EmployeeId)
-                .Include(i => i.Department)
+                //.Include(i => i.Department)
                 .Include(a => a.Addresses)
                 .FirstOrDefaultAsync(cancellationToken);
             var emploeeVm = _mapper.Map<EmployeeVm>(employee);

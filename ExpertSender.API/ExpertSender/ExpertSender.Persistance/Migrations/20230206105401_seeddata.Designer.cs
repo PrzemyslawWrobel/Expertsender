@@ -4,6 +4,7 @@ using ExpertSender.Persistance;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ExpertSender.Persistance.Migrations
 {
     [DbContext(typeof(ExpertSenderDbContext))]
-    partial class ExpertSenderDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230206105401_seeddata")]
+    partial class seeddata
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,20 +34,16 @@ namespace ExpertSender.Persistance.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("AddressType")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BuildingNumber")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Country")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
@@ -56,8 +55,7 @@ namespace ExpertSender.Persistance.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("FlatNumber")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("Inactivated")
                         .HasColumnType("datetime2");
@@ -75,12 +73,10 @@ namespace ExpertSender.Persistance.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Street")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ZipCode")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -143,6 +139,9 @@ namespace ExpertSender.Persistance.Migrations
                     b.Property<DateTime>("DateOfBrith")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
@@ -166,6 +165,8 @@ namespace ExpertSender.Persistance.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DepartmentId");
+
                     b.ToTable("Employees");
                 });
 
@@ -182,6 +183,12 @@ namespace ExpertSender.Persistance.Migrations
 
             modelBuilder.Entity("ExpertSender.Domain.Entities.Employee", b =>
                 {
+                    b.HasOne("ExpertSender.Domain.Entities.Department", "Department")
+                        .WithMany("Employees")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.OwnsOne("ExpertSender.Domain.ValueObjects.EmployeeName", "EmployeeName", b1 =>
                         {
                             b1.Property<int>("EmployeeId")
@@ -204,7 +211,14 @@ namespace ExpertSender.Persistance.Migrations
                                 .HasForeignKey("EmployeeId");
                         });
 
+                    b.Navigation("Department");
+
                     b.Navigation("EmployeeName");
+                });
+
+            modelBuilder.Entity("ExpertSender.Domain.Entities.Department", b =>
+                {
+                    b.Navigation("Employees");
                 });
 
             modelBuilder.Entity("ExpertSender.Domain.Entities.Employee", b =>
